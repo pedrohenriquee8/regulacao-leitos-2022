@@ -1,8 +1,8 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/home/aluno/Documentos/flutter
-FLUTTER_APPLICATION_PATH=/home/aluno/StudioProjects/projeto_leitos_2022
+FLUTTER_ROOT=C:\Users\wedja\Downloads\flutter_windows_3.0.2-stable\flutter
+FLUTTER_APPLICATION_PATH=C:\Users\wedja\Desktop\Projeto914\regulacao-leitos-2022\projeto_leitos_2022
 COCOAPODS_PARALLEL_CODE_SIGN=true
-FLUTTER_TARGET=lib/main.dart
+FLUTTER_TARGET=lib\main.dart
 FLUTTER_BUILD_DIR=build
 FLUTTER_BUILD_NAME=1.0.0
 FLUTTER_BUILD_NUMBER=1
@@ -10,4 +10,4 @@ EXCLUDED_ARCHS[sdk=iphonesimulator*]=i386
 DART_OBFUSCATION=false
 TRACK_WIDGET_CREATION=false
 TREE_SHAKE_ICONS=false
-PACKAGE_CONFIG=.packages
+PACKAGE_CONFIG=.dart_tool/package_config.json
