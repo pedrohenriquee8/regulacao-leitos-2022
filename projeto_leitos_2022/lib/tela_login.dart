@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_leitos_2022/pages/menu.dart';
 
 class TelaLogin extends StatefulWidget {
   const TelaLogin({Key? key}) : super(key: key);
@@ -124,6 +125,12 @@ class _TelaLoginState extends State<TelaLogin> {
                       })),
                   onPressed: () {
                     debugPrint('Clicado');
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => const Menu()
+                      ),
+                    );
                   },
                   child: const Text(
                     'ACESSAR',
