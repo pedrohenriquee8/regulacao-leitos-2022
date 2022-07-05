@@ -1,11 +1,11 @@
+import 'package:projeto_leitos_2022/tela_login.dart';
 import 'package:flutter/material.dart';
-import 'package:testepmovel/nova.dart';
 
 void main() {
   runApp(
     const MaterialApp(
-      home: Nova(),
+      debugShowCheckedModeBanner: false,
+      home: TelaLogin(),
     ),
   );
 }
-
