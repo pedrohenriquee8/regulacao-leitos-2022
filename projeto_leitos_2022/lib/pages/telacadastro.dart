@@ -66,7 +66,9 @@ class _HomePageState extends State<HomePage> {
                   fontSize: 18,
                 ),
               ),
-              FlatButton(
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.transparent),
+                //tirar a sombra
                 child: const Text(
                   "Login",
                   style: TextStyle(
@@ -137,7 +139,7 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 16),
                   Container(
                     decoration: const BoxDecoration(
-                      color: Colors.blue,
+                      color: Colors.white,
                     ),
                     child: ElevatedButton(
                       style: ButtonStyle(
