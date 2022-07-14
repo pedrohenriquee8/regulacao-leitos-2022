@@ -18,8 +18,10 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           Container(
-            decoration: const BoxDecoration(
-              color: Colors.blue,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                 colors: [Colors.blue, Colors.blue.shade800],
+              ),
             ),
             child: buildBody(height, width),
           ),
@@ -43,7 +45,7 @@ class _HomePageState extends State<HomePage> {
 
   Expanded buildIntroduce() {
     return Expanded(
-      flex: 2,
+      flex: 3,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -55,34 +57,34 @@ class _HomePageState extends State<HomePage> {
               fontSize: 32,
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                "Já possui uma conta?",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.transparent),
-                //tirar a sombra
-                child: const Text(
-                  "Login",
+          Padding(
+            padding: const EdgeInsets.all(5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                const Text(
+                  "Já possui uma conta?",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontWeight: FontWeight.bold,
                     fontSize: 18,
-                  ), 
+                  ),
                 ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          )
+                GestureDetector(
+                  child: const Text(
+                    "Login",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ), 
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ) 
+          ),
         ],
       ),
     );
@@ -139,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 16),
                   Container(
                     decoration: const BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.blue,
                     ),
                     child: ElevatedButton(
                       style: ButtonStyle(

@@ -12,6 +12,7 @@ class TelaLogin extends StatefulWidget {
 
 class _TelaLoginState extends State<TelaLogin> {
   bool isChecked = false;
+  bool _showPassword = false;
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -48,7 +49,7 @@ class _TelaLoginState extends State<TelaLogin> {
 
   Expanded buildContent() {
     return Expanded(
-      flex: 5,
+      flex: 4,
       child: Container(
         decoration: const BoxDecoration(
           color: Colors.white,
@@ -72,34 +73,46 @@ class _TelaLoginState extends State<TelaLogin> {
                 const SizedBox(height: 24),
                 inputFormField(
                   label: "Senha",
-                  obscureText: true,
+                  obscureText: _showPassword == false ? true : false,
                   prefixIcon: const Icon(
                     Icons.lock_outlined,
                   ),
-                  suffixIcon: const Icon(
-                    Icons.remove_red_eye,
+                  suffixIcon: GestureDetector(
+                    child: Icon(
+                      _showPassword == false ? Icons.visibility_off : Icons.visibility,
+                    ),
+                    onTap: () {
+                      setState(() {
+                        _showPassword = !_showPassword;
+                      });
+                    },
                   ),
                 ),
-                FlatButton(
-                  child: const Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      "Esqueci a senha",
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 15,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                      child: const Padding(
+                        padding: EdgeInsets.only(top: 10),
+                        child: Text(
+                          "Esqueci a senha",
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 15,
+                          ),
+                        ),
                       ),
+                      onTap: () {
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => const RecuperacaoSenha()
+                          ),
+                        );
+                      },
                     ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context, 
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => const RecuperacaoSenha()
-                      ),
-                    );
-                  }
+                  ],
                 ),
                 Row(
                   children: [
@@ -145,17 +158,18 @@ class _TelaLoginState extends State<TelaLogin> {
                     style: TextStyle(color: Colors.white, fontSize: 28),
                   ),
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 16),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     const Text(
-                      ' Não tem uma conta? ',
+                      'Não tem uma conta?',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 16,
                       ),
                     ),
-                    FlatButton(
+                    GestureDetector(
                       child: const Text(
                         'Criar uma nova',
                         style: TextStyle(
@@ -164,14 +178,14 @@ class _TelaLoginState extends State<TelaLogin> {
                           fontSize: 16,
                         ),
                       ),
-                      onPressed: () {
+                      onTap: () {
                         Navigator.push(
                           context, 
                           MaterialPageRoute(
                             builder: (BuildContext context) => const HomePage()
                           ),
                         );
-                      },
+                      },  
                     ),
                   ],
                 ),
@@ -219,7 +233,7 @@ class _TelaLoginState extends State<TelaLogin> {
     required String label,
     bool obscureText = false,
     Icon? prefixIcon,
-    Icon? suffixIcon,
+    GestureDetector? suffixIcon,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
