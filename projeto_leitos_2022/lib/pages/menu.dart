@@ -14,14 +14,13 @@ class _MenuState extends State<Menu> {
     var width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            color: Colors.white,
-            child: buildBody(height, width),
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Container(
+          color: Colors.white,
+          child: buildBody(height, width),
+        ),
       ),
+
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
@@ -95,7 +94,7 @@ Expanded buildIntroduce() {
         ),
       ),
       child: Container(
-        margin: const EdgeInsets.fromLTRB(25, 20, 15, 30),
+        margin: const EdgeInsets.fromLTRB(25, 30, 15, 30),
         child: Column(
           children: [
             Row(
@@ -105,7 +104,7 @@ Expanded buildIntroduce() {
                   "Boa tarde, representante",
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.white
+                    color: Colors.black,
                   ),
                 ),
                 ElevatedButton(
@@ -124,7 +123,7 @@ Expanded buildIntroduce() {
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
               ],
@@ -147,14 +146,12 @@ Expanded buildIntroduce() {
                       "Status",
                       style: TextStyle(
                         fontSize: 10,
-                        color: Colors.white,
                       ),
                     ),
                     const Text(
                       "hospitais",
                       style: TextStyle(
                         fontSize: 10,
-                        color: Colors.white,
                       ),
                     ),
                   ],
@@ -173,14 +170,12 @@ Expanded buildIntroduce() {
                       "Cadastrar",
                       style: TextStyle(
                         fontSize: 10,
-                        color: Colors.white,
                       ),
                     ),
                     const Text(
                       "hospitais",
                       style: TextStyle(
                         fontSize: 10,
-                        color: Colors.white,
                       ),
                     ),
                   ],
@@ -199,14 +194,12 @@ Expanded buildIntroduce() {
                       "Atualizar",
                       style: TextStyle(
                         fontSize: 10,
-                        color: Colors.white,
                       ),
                     ),
                     const Text(
                       "vagas",
                       style: TextStyle(
                         fontSize: 10,
-                        color: Colors.white,
                       ),
                     ),
                   ],
@@ -225,7 +218,6 @@ Expanded buildIntroduce() {
                       "Mais\n",
                       style: TextStyle(
                         fontSize: 10,
-                        color: Colors.white,
                       ),
                     ),
                   ],

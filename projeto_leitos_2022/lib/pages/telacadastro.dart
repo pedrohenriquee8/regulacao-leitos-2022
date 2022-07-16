@@ -11,57 +11,34 @@ class _HomePageState extends State<HomePage> {
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      body: Column(
+      body: ListView(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
-                 colors: [Colors.blue, Colors.blue.shade800],
+              colors: [
+                Color.fromARGB(255, 24, 108, 177),
+                Color.fromARGB(255, 7, 14, 53)
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
               ),
             ),
-            child: buildBody(height, width),
-          ),
-        ],
-      ),
-    );
-  }
-
-  SizedBox buildBody(double height, double width) {
-    return SizedBox(
-        height: height,
-        width: width,
-        child: Column(
-          children: [
-            buildIntroduce(),
-            buildContent()
-        ]
-      )
-    );
-  }
-
-  Expanded buildIntroduce() {
-    return Expanded(
-      flex: 3,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            "Criar uma nova conta",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 32,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 50, bottom: 40),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const Text(
+                  "Criar uma nova conta",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 32,
+                  ),
+                ),
                 const Text(
                   "Já possui uma conta?",
                   textAlign: TextAlign.center,
@@ -70,7 +47,20 @@ class _HomePageState extends State<HomePage> {
                     fontSize: 18,
                   ),
                 ),
-                GestureDetector(
+                const SizedBox(height: 4),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.blue.shade800),
+                    minimumSize: MaterialStateProperty.all(
+                      const Size(40, 40),
+                    ),
+                    shape: MaterialStateProperty.resolveWith((states) {
+                      return RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4),
+                      );
+                    })
+                  ),
                   child: const Text(
                     "Login",
                     style: TextStyle(
@@ -78,96 +68,92 @@ class _HomePageState extends State<HomePage> {
                       fontSize: 18,
                     ), 
                   ),
-                  onTap: () {
+                  onPressed: () {
                     Navigator.pop(context);
                   },
                 ),
               ],
-            ) 
-          ),
-        ],
-      ),
-    );
-  }
-
-  Expanded buildContent() {
-    return Expanded(
-      flex: 9,
-      child: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-        ),
-        child: SingleChildScrollView(
-          child: Container(
-            margin: const EdgeInsets.only(left: 32, right: 32, top: 12, bottom: 12),
-            child: Form(
-              child: Column(
-                children: [
-                  const SizedBox(height: 16),
-                  inputFormField(label: "Insira seu nome",),
-                  const SizedBox(height: 16),
-                  inputFormField(label: "Email",),
-                  const SizedBox(height: 16),
-                  inputFormField(label: "Senha"),
-                  const SizedBox(height: 16),
-                  inputFormField(label: "Data de nascimento"),
-                  const SizedBox(height: 16),
-                  inputFormField(label: "CPF"),
-                  const SizedBox(height: 16),
-                  inputFormField(label: "Secretaria",
-                  suffixIcon:
-                    const Icon(Icons.arrow_drop_down),
-                  ),
-                  const SizedBox(height: 16),
-                  inputFormField(label: "Insira seu cadastro na secretaria"),
-                  const SizedBox(height: 16),
-                  Row(
-                    children: [
-                      Checkbox(value: isChecked,
-                        onChanged: (bool? value){
-                        setState(() {
-                          isChecked = value!;
-                        });
-                      }),
-                      const Text(
-                        "Estou de acordo com os termos de\nprivacidade e segurança",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ]
-                  ), 
-                  const SizedBox(height: 16),
-                  Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.blue,
-                    ),
-                    child: ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.blue.shade700),
-                        minimumSize: MaterialStateProperty.all(
-                          const Size(348, 64),
-                        ),
-                        shape: MaterialStateProperty.resolveWith((states) {
-                          return RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          );
-                        })),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text(
-                        'CADASTRAR',
-                        style: TextStyle(color: Colors.white, fontSize: 28),
-                      ),
-                    ),
-                  )  
-                ],
-              ), 
+            ),
             ),
           ),
-        ),
+          Container(
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(24),
+                topRight: Radius.circular(24),
+              ),
+            ),
+            child: Container(
+              margin: const EdgeInsets.only(left: 32, right: 32, top: 12, bottom: 12),
+              child: Form(
+                child: Column(
+                  children: [
+                    const SizedBox(height: 16),
+                    inputFormField(label: "Insira seu nome",),
+                    const SizedBox(height: 16),
+                    inputFormField(label: "Email",),
+                    const SizedBox(height: 16),
+                    inputFormField(label: "Senha"),
+                    const SizedBox(height: 16),
+                    inputFormField(label: "Data de nascimento"),
+                    const SizedBox(height: 16),
+                    inputFormField(label: "CPF"),
+                    const SizedBox(height: 16),
+                    inputFormField(label: "Secretaria",
+                      suffixIcon: const Icon(Icons.arrow_drop_down),
+                    ),
+                    const SizedBox(height: 16),
+                    inputFormField(label: "Insira seu cadastro na secretaria"),
+                    const SizedBox(height: 16),
+                    Row(
+                      children: [
+                        Checkbox(value: isChecked,
+                          onChanged: (bool? value){
+                          setState(() {
+                            isChecked = value!;
+                          });
+                        }),
+                        const Text(
+                          "Estou de acordo com os termos de\nprivacidade e segurança",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ]
+                    ), 
+                    const SizedBox(height: 16),
+                    Container(
+                      decoration: const BoxDecoration(
+                        color: Colors.blue,
+                      ),
+                      child: ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(Colors.blue.shade700),
+                          minimumSize: MaterialStateProperty.all(
+                            const Size(348, 64),
+                          ),
+                          shape: MaterialStateProperty.resolveWith((states) {
+                            return RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            );
+                          })),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text(
+                          'CADASTRAR',
+                          style: TextStyle(color: Colors.white, fontSize: 28),
+                        ),
+                      ),
+                    )  
+                  ],
+                ),
+              ),
+            )
+          ),
+        ],
       ),
     );
   }
